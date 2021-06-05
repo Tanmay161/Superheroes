@@ -1,10 +1,10 @@
 var canvas = new fabric.Canvas('myCanvas');
-block_image_height = 0;
-block_image_width = 0;
+block_image_height = 30;
+block_image_width = 30;
 player_x = 0;
 player_y = 0;
-block_image_object;
-player_image_object;
+var block_image_object = ""; 
+var player_object = "";
 function player_update() { 
     fabric.Image.fromURL("player.png", function(Img) { 
         player_object = Img; 
@@ -23,9 +23,10 @@ function player_update() {
              canvas.add(block_image_object); 
 }); }
 
-canvas.addEventListener("keydown",my_keydown);
+window.addEventListener("keydown",my_keydown);
 function my_keydown(e){
-    keyPressed = e.KeyCode;
+    keyPressed = e.keyCode;
+    console.log(keyPressed);
     if(e.shiftKey == true && keyPressed == '80') { 
         console.log("p and shift pressed together"); 
         block_image_width = block_image_width + 10; 
@@ -33,7 +34,7 @@ function my_keydown(e){
         document.getElementById("current_Width").innerHTML = block_image_width; 
         document.getElementById("current_Height").innerHTML = block_image_height; 
     } 
-    if(e.shiftKey && keyPressed == '77') { 
+    if(e.shiftKey == true && keyPressed == '77') { 
         console.log("m and shift pressed together"); 
         block_image_width = block_image_width - 10; 
         block_image_height = block_image_height - 10; 
@@ -54,7 +55,7 @@ function my_keydown(e){
     }
     if(keyPressed == "82"){
         console.log("r key pressed");
-        new_image('thor_right_hand');
+        new_image('thor_right_hand.png');
     }
     if(keyPressed == "72"){
         console.log("h key pressed")
